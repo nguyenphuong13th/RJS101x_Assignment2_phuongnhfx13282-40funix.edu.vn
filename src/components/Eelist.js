@@ -1,4 +1,4 @@
-import { Card,CardImg,CardImgOverlay,CardText,CardBody,CardTitle } from 'reactstrap'
+import { Card,CardImg,CardImgOverlay,CardText,CardTitle } from 'reactstrap'
 import { useState } from "react"
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/alberto.png'
