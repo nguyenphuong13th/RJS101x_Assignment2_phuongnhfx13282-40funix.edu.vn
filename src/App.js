@@ -15,6 +15,7 @@ function App() {
   return (
     <div className='container'>
       <Navbarcomponent/>
+      {/* usign react router V6 to navigate to another page */}
       <Routes>
         <Route path="/" element={<Eelist staffs={STAFFS}/>}/>
         <Route path="/department" element={<Departmentcomponent department={DEPARTMENTS}/>}/>
