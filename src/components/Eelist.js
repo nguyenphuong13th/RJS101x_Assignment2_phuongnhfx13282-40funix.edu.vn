@@ -1,8 +1,9 @@
 import { Card,CardImg,CardTitle } from 'reactstrap'
-import { Form } from 'react-bootstrap';
+import { Form,Container,Col,Row } from 'react-bootstrap';
 import { useState } from "react"
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/alberto.png'
+import { check } from 'prettier';
 function Eelist(props){
     const[sortedEeList,setsortedEeList]=useState(props.staffs);
     const[selectedEe,setSelectedEe] = useState(null)
@@ -39,33 +40,29 @@ function Eelist(props){
         const selectedOption = e.target.value
         //khi gọi hàm này , thì khởi tạo 1 array mới để giá trị luôn luôn đc render lại
         const initialEeList = [...sortedEeList]
-        console.log(initialEeList)
         // Nếu chọn tên thì sẽ lấy ra mảng đã sắp xếp theo tên
         if(selectedOption == 'Name'){
             setsortedEeList(initialEeList.sort(function(a,b){
                 var nameA = a.name.toUpperCase(); // ignore upper and lowercase
                 var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-                if (nameA < nameB) {
-                  return -1;
+                if (nameA < nameB ) {
+                  return 1;
                 }
                 if (nameA > nameB) {
-                  return 1;
+                  return -1;
                 }
 
                 // names must be equal
                 return 0;
             }))
             // Nếu chọn chỉ số lương thì sẽ lấy ra mảng đã sắp xếp theo hệ số lương từ thấp tới cao
+
         }else if(selectedOption=='Salary'){
-            console.log(initialEeList.sort(function(a,b){
-                return a.salaryScale - b.salaryScale;
-            }))
             setsortedEeList(initialEeList.sort(function(a,b){
                 return a.salaryScale - b.salaryScale;
             }))
         }
     }
-    console.log(sortedEeList);
     const Liststaff = sortedEeList.map((staffs)=>{
         return(
             <div key={staffs.id} onClick={()=>OnSelectedEe(staffs)} className='col-sm-12 col-md-6 col-lg-3 mt-5'>
@@ -82,19 +79,25 @@ function Eelist(props){
     return (
         <div className='container mt-5'>
             <div className='row'>
-                {/* đây là đoạn form bạn sort đúng không ? chút nữa bạn sửa lại css nhé  */}
-            <Form.Select aria-label="Default select example"
-            onChange={handleOnCHange}>
-                <option>Sort by :</option>
-                <option value="Name">Name</option>
-                <option value="Department">Department</option>
-                <option value="Salary">Salary</option>
-            </Form.Select>
-
-{/* <button style={{ margin: 5, float: "right" }} type="button" className="btn btn-outline-dark " onClick={onSortChangeId}>
-                            ID Sort
-                            <i className="fa fa-sort"></i>
-                        </button> */}
+                <Container>
+                    <Row className="justify-content-md-between">
+                        <Col xs lg="2">
+                        <h3>Nhân Viên</h3>
+                        </Col>
+                        <Col md="auto">
+                            <Form.Select aria-label="Default select example"
+                            onChange={handleOnCHange}>
+                                <option>Sort by :</option>
+                                <option value="Name">Name</option>
+                                <option value="Department">Department</option>
+                                <option value="Salary">Salary</option>
+                            </Form.Select>
+                            <Form.Check label="Accendisng"
+                            value={'Accending'}
+                            />
+                        </Col>
+                    </Row>
+                </Container>
                 {Liststaff}
             </div>
         </div>
