@@ -25,7 +25,6 @@ function Eelist(props){
     //     }
     //     //ở đây cũng cần phải set lại cái sortSortedEeListsd để nếu đang là tăng dần thì lần sort sau sẽ là giảm và ngược lại
     //     setSortsortSortedEeLists(!sortSortedEeLists);
-
     //    //ở cuối function sẽ set lại cái list nhân viên = cái array mới này
     //    setsortedEeList(copy);
     //    khi gọi sort phải tạo lại cái list nhân viên mới
