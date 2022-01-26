@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/images/alberto.png'
 import { check } from 'prettier';
 function Eelist(props){
+
+
     const[sortedEeList,setsortedEeList]=useState(props.staffs);
     const[selectedEe,setSelectedEe] = useState(null)
     //Sort by ID
